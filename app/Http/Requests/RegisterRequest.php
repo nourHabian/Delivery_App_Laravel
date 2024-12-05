@@ -22,12 +22,12 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name'=>'required|string|max:50|',
-            'last_name'=>'required|string|max:50|',
-            'phone_number'=>'required|unique:users,phone_number|digits:10',
-            'location'=>'required|string',
-            'image_path'=>'nullable|string',
-            'password'=>'required|confirmed|min:8'
+            'first_name' => 'required|string|max:50|',
+            'last_name' => 'required|string|max:50|',
+            'phone_number' => 'required|unique:users,phone_number|digits:10',
+            'location' => 'required|string',
+            'profile_photo' => 'file|mimes:jpg,jpeg,png|max:2048',
+            'password' => 'required|confirmed|min:8'
         ];
     }
 }

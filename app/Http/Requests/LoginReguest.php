@@ -22,8 +22,8 @@ class LoginReguest extends FormRequest
     public function rules(): array
     {
         return [
-             'password'=>'required|min:8',
-             'phone_number'=>'required|digits:10'
+            'password' => 'required|min:8',
+            'phone_number' => 'required|digits:10'
         ];
     }
 }
