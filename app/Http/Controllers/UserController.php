@@ -14,25 +14,21 @@ class UserController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        $filePath = null;
+        $filePath = "public\storage\profile_photos\default_profile_photo.jpg";
         if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('profile_photos', $fileName, 'public'); // Saves in storage/app/public/profile_photos
-            // Save user with photo
-            $user = User::create([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'password' => Hash::make($request->password),
-                'phone_number' => $request->phone_number,
-                'location' => $request->location,
-                'profile_photo' => $filePath,
-            ]);
-            return response()->json(['message' => 'register successful'], 201);
         }
-        return response()->json([
-            'message' => 'Profile photo is required!',
-        ], 422);   
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'password' => Hash::make($request->password),
+            'phone_number' => $request->phone_number,
+            'location' => $request->location,
+            'profile_photo' => $filePath,
+        ]);
+        return response()->json(['message' => 'register successful'], 201);
     }
     public function login(LoginReguest $request)
     {
