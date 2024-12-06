@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        $filePath = "public\storage\profile_photos\default_profile_photo.jpg";
+        $filePath = "storage\app\public\profile_photos\default_profile_photo.png";
         if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
