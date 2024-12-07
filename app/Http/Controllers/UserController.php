@@ -34,8 +34,8 @@ class UserController extends Controller
     {
         if (!Auth::attempt($request->only('phone_number', 'password')))
             return response()->json(['message' => 'invalid number or password'], 401);
-         $user=User::where('email',$request->email)->FirstOrFail();
-         $token=$user->CreateToken('user_active')->plainTextToken;
-         return response()->json([ 'message'=>'login successful' ],200);
-     }
+        $user = User::where('email', $request->email)->FirstOrFail();
+        $token = $user->CreateToken('user_active')->plainTextToken;
+        return response()->json(['message' => 'login successful'], 200);
     }
+}
