@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('store_id')->constrained('stores')->cascadeOnDelete();
             $table->string('name');
             $table->integer('price');
+            $table->integer('size');
             $table->integer('quantity');
             $table->text('description')->nullable();
             $table->string('product_photo')->nullable;
