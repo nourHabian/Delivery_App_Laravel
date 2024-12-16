@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
@@ -18,3 +19,5 @@ Route::get('store/products', [StoreController::class, 'showStoreProducts']);
 
 Route::get('product/index', [ProductController::class, 'index']);
 Route::get('product/show', [ProductController::class, 'showProductInfo']);
+
+Route::get('order/show', [OrderController::class, 'showOrderUser']);
