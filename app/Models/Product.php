@@ -14,10 +14,14 @@ class Product extends Model
     }
     public function sizes()
     {
-        return $this->belongsToMany(size::class,'products_sizes');
+        return $this->belongsToMany(Size::class,'product_size');
     }
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'product_user');
     }
 }
