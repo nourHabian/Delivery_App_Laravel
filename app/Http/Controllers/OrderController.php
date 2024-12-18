@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\Size;
 
-use App\Models\Size;
 use App\Models\User;
 use Illuminate\Http\Request;
 
