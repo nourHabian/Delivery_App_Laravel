@@ -23,3 +23,4 @@ Route::get('product/show', [ProductController::class, 'showProductInfo']);
 Route::get('order/show', [OrderController::class, 'showOrderUser']);
 Route::put('order/update', [OrderController::class, 'updateOrdert']);
 Route::post('order/add', [OrderController::class, 'addOrder']);
+Route::get('order/cart', [OrderController::class, 'showUserCart']);
