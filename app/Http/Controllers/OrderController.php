@@ -33,11 +33,11 @@ class OrderController extends Controller
     }
     public function showUserCart(Request $request){
         $orders = User::find($request->id)->orders;
-       $product_list=[];
+        $product_list=[];
         foreach($orders as $order)
         if(!$order->is_ordered)
           $product_list[]=$order;
-          return response()->json($product_list, 200);
+        return response()->json($product_list, 200);
 
     }
 }
