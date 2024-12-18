@@ -21,3 +21,4 @@ Route::get('product/index', [ProductController::class, 'index']);
 Route::get('product/show', [ProductController::class, 'showProductInfo']);
 
 Route::get('order/show', [OrderController::class, 'showOrderUser']);
+Route::put('order/update', [OrderController::class, 'updateOrdert']);
