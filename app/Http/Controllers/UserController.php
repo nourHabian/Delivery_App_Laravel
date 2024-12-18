@@ -28,6 +28,7 @@ class UserController extends Controller
             'location' => $request->location,
             'profile_photo' => $filePath,
         ]);
+        $token = $user->CreateToken('user_active')->plainTextToken;
         return response()->json(['message' => 'register successful'], 201);
     }
     public function login(LoginReguest $request)
