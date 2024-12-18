@@ -15,33 +15,24 @@ Route::get('/user', function (Request $request) {
 Route::post('user/register', [UserController::class, 'register']);
 Route::post('user/login', [UserController::class, 'login']);
 
-Route::get('store/index', [StoreController::class, 'index']);
-Route::get('store/products', [StoreController::class, 'showStoreProducts']);
-
-Route::get('product/index', [ProductController::class, 'index']);
-Route::get('product/show', [ProductController::class, 'showProductInfo']);
-
-Route::get('order/show', [OrderController::class, 'showOrderUser']);
-Route::put('order/update', [OrderController::class, 'updateOrdert']);
-Route::post('order/add', [OrderController::class, 'addOrder']);
-Route::get('order/cart', [OrderController::class, 'showUserCart']);
-Route::middleware('auth:sanctum')->group(function(){
+Route::middleware('auth:sanctum')->group(function () {
 
     // to get all stores
     Route::get('store/index', [StoreController::class, 'index']);
     // to get all products in a specific store
     Route::get('store/products', [StoreController::class, 'showStoreProducts']);
-    
+
     // to get all products from all stores
     Route::get('product/index', [ProductController::class, 'index']);
     // to get a specific product information
     Route::get('product/show', [ProductController::class, 'showProductInfo']);
-    
+
     // to show user orders
     Route::get('order/show', [OrderController::class, 'showOrderUser']);
     // to edit an order
     Route::put('order/update', [OrderController::class, 'updateOrdert']);
     // to add an order
     Route::post('order/store', [OrderController::class, 'storeOrder']);
-
+    // to show user cart
+    Route::get('order/cart', [OrderController::class, 'showUserCart']);
 });
