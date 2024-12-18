@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignId('size_id')->constrained('sizes')->cascadeOnDelete();
+            $table->integer('quantity');
+            $table->float('price');
+            $table->time('submission_time');
             $table->boolean('is_ordered')->default(false);
             $table->timestamps();
         });
