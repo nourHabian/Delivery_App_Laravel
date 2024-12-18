@@ -29,7 +29,7 @@ class UserController extends Controller
             'profile_photo' => $filePath,
         ]);
         $token = $user->CreateToken('user_active')->plainTextToken;
-        return response()->json(['message' => 'register successful'], 201);
+        return response()->json(['message' => 'register successful','token'=>$token], 201);
     }
     public function login(LoginReguest $request)
     {
@@ -37,6 +37,6 @@ class UserController extends Controller
             return response()->json(['message' => 'invalid number or password'], 401);
         $user = User::where('email', $request->email)->FirstOrFail();
         $token = $user->CreateToken('user_active')->plainTextToken;
-        return response()->json(['message' => 'login successful'], 200);
+        return response()->json(['message' => 'login successful','token'=>$token], 200);
     }
 }
