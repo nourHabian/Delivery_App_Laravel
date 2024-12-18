@@ -17,4 +17,9 @@ class Order extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function size()
+    {
+        return $this->hasOne(Size::class);
+    }
 }
