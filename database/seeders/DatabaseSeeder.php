@@ -10,6 +10,6 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->call(SizeSeeder::class);
+        $this->call(SizeSeeder::class, StoreSeeder::class);
     }
 }

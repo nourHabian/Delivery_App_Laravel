@@ -60,9 +60,7 @@ class OrderController extends Controller
             ], 200);
         }
         $order->delete();
-        return response()->json([
-            'message' => 'Order deleted successfully'
-        ], 204);
+        return response()->json(null, 204);
     }
     public function showUserCart(Request $request)
     {
