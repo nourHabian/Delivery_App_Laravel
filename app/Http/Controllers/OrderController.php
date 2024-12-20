@@ -39,7 +39,7 @@ class OrderController extends Controller
         $orders = User::find($request->id)->orders;
         return response()->json($orders, 200);
     }
-    public function updateOrder(Request $request)
+    public function updateOrderSize(Request $request)
     {
         $size_old_id = Order::where('id', $request->id)->FirstOrFail()->size_id;
         $size_new_id = Size::where('name', $request->size_new)->FirstOrFail()->id;
@@ -73,4 +73,15 @@ class OrderController extends Controller
                 $product_list[] = $order;
         return response()->json($product_list, 200);
     }
-}
+    public function updateOrderuQantity(Request $request){
+        $quantity=$request->qantity_new;
+        $order=Order::where('id', $request->id)->FirstOrFail();
+        $price = $order->price/$order->quantity;
+        $price=$price*$quantity;
+        Order::where('id', $request->id)->update([
+          'quantity'=>$quantity,
+          'price'=>$price
+        ]);
+        return response()->json(['message' => 'update successful'], 200);
+      }
+} 
