@@ -50,7 +50,7 @@ class OrderController extends Controller
             'message' => 'Order updated successfully'
         ], 200);
     }
-    public function destroyOrder(Request $request) 
+    public function destroyOrder(Request $request)
     {
         $order_id = $request->order_id;
         $order = Order::findOrFail($order_id);
@@ -73,15 +73,18 @@ class OrderController extends Controller
                 $product_list[] = $order;
         return response()->json($product_list, 200);
     }
-    public function updateOrderuQantity(Request $request){
-        $quantity=$request->qantity_new;
-        $order=Order::where('id', $request->id)->FirstOrFail();
-        $price = $order->price/$order->quantity;
-        $price=$price*$quantity;
+    public function updateOrderuQuantity(Request $request)
+    {
+        $quantity = $request->quantity_new;
+        $order = Order::where('id', $request->id)->FirstOrFail();
+        $price = $order->price / $order->quantity;
+        $price = $price * $quantity;
         Order::where('id', $request->id)->update([
-          'quantity'=>$quantity,
-          'price'=>$price
+            'quantity' => $quantity,
+            'price' => $price
         ]);
-        return response()->json(['message' => 'update successful'], 200);
-      }
-} 
+        return response()->json([
+            'message' => 'Order updated successfully'
+        ], 200);
+    }
+}
