@@ -30,9 +30,10 @@ Route::middleware('auth:sanctum')->group(function () {
     // to show user orders
     Route::get('order/show', [OrderController::class, 'showOrderUser']);
     // to edit an order
-    Route::put('order/update', [OrderController::class, 'updateOrdert']);
+    Route::put('order/update/size', [OrderController::class, 'updateOrderSize']);
     // to add an order
     Route::post('order/store', [OrderController::class, 'storeOrder']);
     // to show user cart
     Route::get('order/cart', [OrderController::class, 'showUserCart']);
+    Route::put('order/update/qantity', [OrderController::class, 'updateOrderuQantity']);
 });
