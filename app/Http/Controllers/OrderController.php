@@ -22,14 +22,7 @@ class OrderController extends Controller
         $product_size = $request->size;
         $size = Size::where('name', $product_size)->FirstOrFail();
         $price = $request->quantity * $product->price;
-        $current_quantity = DB::table('product_size')->where('product_id', $product_id)->where('size_id', $size->id)->value('quantity');
-        if ($current_quantity < $request->quantity) {
-            return response()->json([
-                'message' => 'this quantity is unavailable currently, reduce it or try again later'
-            ], 200);
-        }
-        $time = Carbon::now()->toDateTimeString();
-        $order = Order::create([
+        Order::create([
             'user_id' => $user_id,
             'product_id' => $product_id,
             'size_id' => $size->id,
@@ -37,7 +30,9 @@ class OrderController extends Controller
             'price' => $price,
             'submission_time' => Carbon::now()->toDateTimeString()
         ]);
-        return response()->json($order, 200);
+        return response()->json([
+            'message' => 'Order added successfully'
+        ], 200);
     }
     public function showOrderUser(Request $request)
     {
@@ -49,11 +44,11 @@ class OrderController extends Controller
         $size_old_id = Order::where('id', $request->id)->FirstOrFail()->size_id;
         $size_new_id = Size::where('name', $request->size_new)->FirstOrFail()->id;
         $product_id = Order::where('id', $request->id)->FirstOrFail()->product_id;
-        if (DB::table('product_size')->where('product_id', $product_id)->where('size_id', $size_new_id)->value('quantity') <= 0)
-            return response()->json(['message' => 'Product is not available'], 422);
         DB::table('product_size')->where('product_id', $product_id)
             ->where('size_id', $size_old_id)->update(['size_id' => $size_new_id]);
-        return response()->json(['message' => 'update successful'], 200);
+        return response()->json([
+            'message' => 'Order updated successfully'
+        ], 200);
     }
     public function showUserCart(Request $request)
     {
