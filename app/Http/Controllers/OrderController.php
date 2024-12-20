@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function storeOrder(Request $request)
     {
         $user_id = Auth::user()->id;
-        $product_id = $request->id;
+        $product_id = $request->product_id;
         $product = Product::findOrFail($product_id);
         $product_size = $request->size;
         $size = Size::where('name', $product_size)->FirstOrFail();
@@ -49,6 +49,20 @@ class OrderController extends Controller
         return response()->json([
             'message' => 'Order updated successfully'
         ], 200);
+    }
+    public function destroyOrder(Request $request) 
+    {
+        $order_id = $request->order_id;
+        $order = Order::findOrFail($order_id);
+        if ($order->is_ordered) {
+            return response()->json([
+                'message' => 'You can not delete this order anymore'
+            ], 200);
+        }
+        $order->delete();
+        return response()->json([
+            'message' => 'Order deleted successfully'
+        ], 204);
     }
     public function showUserCart(Request $request)
     {
