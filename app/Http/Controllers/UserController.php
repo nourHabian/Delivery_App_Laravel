@@ -34,6 +34,7 @@ class UserController extends Controller
             'token' => $token
         ], 201);
     }
+
     public function login(LoginReguest $request)
     {
         if (!Auth::attempt($request->only('phone_number', 'password')))
@@ -45,4 +46,31 @@ class UserController extends Controller
             'token' => $token
         ], 200);
     }
+
+    public function showUserOrder()
+    {
+        $orders = Auth::user()->orders;
+        return response()->json($orders, 200);
+    }
+
+    public function showUserCart()
+    {
+        $orders = Auth::user()->orders;
+        $product_list = [];
+        foreach ($orders as $order)
+            if (!$order->is_ordered)
+                $product_list[] = $order;
+        return response()->json($product_list, 200);
+    }
+
+    public function showCompletedOrderes()
+    {
+        $orders = Auth::user()->orders;
+        $product_list = [];
+        foreach ($orders as $order)
+            if ($order->is_ordered)
+                $product_list[] = $order;
+        return response()->json($product_list, 200);
+    }
+
 }

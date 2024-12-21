@@ -15,7 +15,7 @@ class ProductController extends Controller
     }
     public function showProductInfo(Request $request)
     {
-        $product_id = $request->id;
+        $product_id = $request->product_id;
         $product = Product::findOrFail($product_id);
         $store = $product->store;
         $store_name = $store->name;

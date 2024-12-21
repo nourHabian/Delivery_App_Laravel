@@ -14,7 +14,7 @@ class StoreController extends Controller
     }
     public function showStoreProducts(Request $Request)
     {
-        $products = Store::find($Request->id)->products;
+        $products = Store::find($Request->store_id)->products;
         return response()->json($products, 200);
     }
 }

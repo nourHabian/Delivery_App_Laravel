@@ -34,11 +34,6 @@ class OrderController extends Controller
             'message' => 'Order added successfully'
         ], 200);
     }
-    public function showOrderUser(Request $request)
-    {
-        $orders = User::find($request->id)->orders;
-        return response()->json($orders, 200);
-    }
     public function updateOrderSize(Request $request)
     {
         $size_old_id = Order::where('id', $request->id)->FirstOrFail()->size_id;
@@ -61,15 +56,6 @@ class OrderController extends Controller
         }
         $order->delete();
         return response()->json(null, 204);
-    }
-    public function showUserCart(Request $request)
-    {
-        $orders = User::find($request->id)->orders;
-        $product_list = [];
-        foreach ($orders as $order)
-            if (!$order->is_ordered)
-                $product_list[] = $order;
-        return response()->json($product_list, 200);
     }
     public function updateOrderuQuantity(Request $request)
     {
