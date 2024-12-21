@@ -13,462 +13,462 @@ class ProductSeeder extends Seeder
         $products = [
             'product_1' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Scarf',
                 'price' => 37.50,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_1.png'
             ],
             'product_2' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 26.97,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_2.png'
             ],
             'product_3' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 14.58,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_3.png'
             ],
             'product_4' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Caot',
                 'price' => 40.41,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_4.png'
             ],
             'product_5' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Skirt',
                 'price' => 46.61,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_5.png'
             ],
             'product_6' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 48.00,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_6.png'
             ],
             'product_7' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 30.89,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_7.png'
             ],
             'product_8' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Skirt',
                 'price' => 39.98,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_8.png'
             ],
             'product_9' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 42.47,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_9.png'
             ],
             'product_10' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Scarf',
                 'price' => 16.43,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_10.png'
             ],
             'product_11' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 38.19,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_11.png'
             ],
             'product_12' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Scarf',
                 'price' => 18.16,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_12.png'
             ],
             'product_13' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 14.10,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_13.png'
             ],
             'product_14' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 23.99,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_14.png'
             ],
             'product_15' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 45.05,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_15.png'
             ],
             'product_16' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 38.11,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_16.png'
             ],
             'product_17' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 45.29,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_17.png'
             ],
             'product_18' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Skirt',
                 'price' => 19.70,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_18.png'
             ],
             'product_19' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 23.37,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_19.png'
             ],
             'product_20' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 27.10,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_20.png'
             ],
             'product_21' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Scarf',
                 'price' => 45.18,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_21.png'
             ],
             'product_22' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 22.93,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_22.png'
             ],
             'product_23' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 14.41,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_23.png'
             ],
             'product_24' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 23.49,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_24.png'
             ],
             'product_25' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Scarf',
                 'price' => 32.57,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_25.png'
             ],
             'product_26' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 35.81,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_26.png'
             ],
             'product_27' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 16.37,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_27.png'
             ],
             'product_28' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 38.74,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_28.png'
             ],
             'product_29' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Scarf',
                 'price' => 14.76,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_29.png'
             ],
             'product_30' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 11.39,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_30.png'
             ],
             'product_31' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Skirt',
                 'price' => 25.02,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_31.png'
             ],
             'product_32' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 20.72,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_32.png'
             ],
             'product_33' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 42.62,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_33.png'
             ],
             'product_34' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 13.77,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_34.png'
             ],
             'product_35' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 18.36,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_35.png'
             ],
             'product_36' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 24.67,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_36.png'
             ],
             'product_37' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 42.68,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_37.png'
             ],
             'product_38' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 46.36,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_38.png'
             ],
             'product_39' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 16.71,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_39.png'
             ],
             'product_40' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 37.93,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_40.png'
             ],
             'product_41' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 48.04,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_41.png'
             ],
             'product_42' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 44.66,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_42.png'
             ],
             'product_43' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 49.44,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_43.png'
             ],
             'product_44' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 44.79,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_44.png'
             ],
             'product_45' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 28.74,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_45.png'
             ],
             'product_46' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 29.73,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_46.png'
             ],
             'product_47' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 39.55,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_47.png'
             ],
             'product_48' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 17.60,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_48.png'
             ],
             'product_49' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 23.41,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_49.png'
             ],
             'product_50' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 38.60,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_50.png'
             ],
             'product_51' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 37.48,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_51.png'
             ],
             'product_52' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 20.58,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_52.png'
             ],
             'product_53' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 12.97,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_53.png'
             ],
             'product_54' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 27.88,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_54.png'
             ],
             'product_55' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Skirt',
                 'price' => 15.20,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_55.png'
             ],
             'product_56' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 32.33,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_56.png'
             ],
             'product_57' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 37.99,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_57.png'
             ],
             'product_58' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Scarf',
                 'price' => 46.84,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_58.png'
             ],
             'product_59' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 12.06,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_59.png'
             ],
             'product_60' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Blouse',
                 'price' => 33.47,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_60.png'
             ],
             'product_61' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 40.73,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_61.png'
             ],
             'product_62' => [
                 'store_id' => 2,
-                'name' => '',
+                'name' => 'Coat',
                 'price' => 36.16,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_62.png'
             ],
             'product_63' => [
                 'store_id' => 3,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 43.41,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_63.png'
             ],
             'product_64' => [
                 'store_id' => 4,
-                'name' => '',
+                'name' => 'Scarf',
                 'price' => 45.64,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_64.png'
             ],
             'product_65' => [
                 'store_id' => 5,
-                'name' => '',
+                'name' => 'Pants',
                 'price' => 13.26,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_65.png'
             ],
             'product_66' => [
                 'store_id' => 1,
-                'name' => '',
+                'name' => 'Dress',
                 'price' => 28.72,
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_66.png'
