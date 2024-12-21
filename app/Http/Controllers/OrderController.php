@@ -39,13 +39,10 @@ class OrderController extends Controller
         $size_new_id = Size::where('name', $request->size_new)->FirstOrFail()->id;
         $order = Order::where('id', $request->order_id)->FirstOrFail();
         $order->update([
-            'size_id'=>$size_new_id
+            'size_id' => $size_new_id
         ]);
         return response()->json([
-            'message' => 'Order updated successfully',
-            'old size id' => $size_old_id,
-            'new' => $size_new_id,
-            'product id' => $product_id
+            'message' => 'Order updated successfully'
         ], 200);
     }
     public function destroyOrder(Request $request)
