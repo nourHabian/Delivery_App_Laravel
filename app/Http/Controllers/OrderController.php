@@ -36,13 +36,17 @@ class OrderController extends Controller
     }
     public function updateOrderSize(Request $request)
     {
-        $size_old_id = Order::where('id', $request->id)->FirstOrFail()->size_id;
+        $size_old_id = Order::where('id', $request->order_id)->FirstOrFail()->size_id;
         $size_new_id = Size::where('name', $request->size_new)->FirstOrFail()->id;
-        $product_id = Order::where('id', $request->id)->FirstOrFail()->product_id;
+        $product_id = Order::where('id', $request->order_id)->FirstOrFail()->product_id;
         DB::table('product_size')->where('product_id', $product_id)
             ->where('size_id', $size_old_id)->update(['size_id' => $size_new_id]);
+        
         return response()->json([
-            'message' => 'Order updated successfully'
+            'message' => 'Order updated successfully',
+            'old size id' => $size_old_id,
+            'new' => $size_new_id,
+            'product id' => $product_id
         ], 200);
     }
     public function destroyOrder(Request $request)
@@ -60,10 +64,10 @@ class OrderController extends Controller
     public function updateOrderuQuantity(Request $request)
     {
         $quantity = $request->quantity_new;
-        $order = Order::where('id', $request->id)->FirstOrFail();
+        $order = Order::where('id', $request->order_id)->FirstOrFail();
         $price = $order->price / $order->quantity;
         $price = $price * $quantity;
-        Order::where('id', $request->id)->update([
+        Order::where('id', $request->order_id)->update([
             'quantity' => $quantity,
             'price' => $price
         ]);

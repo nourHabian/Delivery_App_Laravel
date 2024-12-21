@@ -35,12 +35,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('product/show', [ProductController::class, 'showProductInfo']);
 
 
-    // to edit an order size
-    Route::put('order/update/size', [OrderController::class, 'updateOrderSize']);
     // to add an order
     Route::post('order/store', [OrderController::class, 'storeOrder']);
-    // to delete an order
-    Route::delete('order/delete', [OrderController::class, 'destroyOrder']);
+    // to edit an order size
+    Route::put('order/update/size', [OrderController::class, 'updateOrderSize']);
     // to edit an order quantity
     Route::put('order/update/quantity', [OrderController::class, 'updateOrderuQuantity']);
+    // to delete an order
+    Route::delete('order/delete', [OrderController::class, 'destroyOrder']);
 });
