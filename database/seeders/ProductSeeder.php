@@ -474,12 +474,6 @@ class ProductSeeder extends Seeder
                 'description' => '',
                 'product_photo' => 'storage\app\public\product_photos\pic_66.png'
             ],
-
-
-            // from here
-
-
-
             'product_67' => [
                 'store_id' => 2,
                 'name' => 'Pants',
