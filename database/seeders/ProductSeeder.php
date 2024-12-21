@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class ProductSeeder extends Seeder
 {
     public function run(): void
@@ -944,12 +944,17 @@ class ProductSeeder extends Seeder
         ];
 
         foreach ($products as $product) {
-            Product::create([
+          $prod=  Product::create([
                 'store_id' => $product['store_id'],
                 'name' => $product['name'],
                 'price' => $product['price'],
                 'description' => null,
                 'product_photo' => $product['product_photo'],
+            ]);
+            DB::table('product_size')->insert([
+                ['product_id' => $prod->id, 'size_id' => 1, 'quantity' => 20],
+                ['product_id' => $prod->id, 'size_id' => 2, 'quantity' => 20],
+                ['product_id' => $prod->id, 'size_id' => 3, 'quantity' => 20],
             ]);
         }
     }
