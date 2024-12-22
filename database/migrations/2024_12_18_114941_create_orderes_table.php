@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('size_id')->constrained('sizes')->cascadeOnDelete();
             $table->integer('quantity');
             $table->float('price');
-            $table->time('submission_time');
+            $table->datetime('submission_time')->nullable();
+            $table->datetime('expected_delivery_time')->nullable();
             $table->boolean('is_ordered')->default(false);
             $table->timestamps();
         });

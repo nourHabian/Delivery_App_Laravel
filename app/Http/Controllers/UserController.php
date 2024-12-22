@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests\LoginReguest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -78,11 +83,62 @@ class UserController extends Controller
         $user = Auth::user();
         $orders = $user->orders;
         $cart = array();
-        foreach($orders as $order) {
+        foreach ($orders as $order) {
             if (!$order->is_ordered) {
                 array_push($cart, $order);
             }
         }
-        
+        if (empty($cart)) {
+            return response()->json([
+                'message' => 'Cart is empty.'
+            ], 200);
+        }
+        foreach ($cart as $order) {
+            $current_quantity = DB::table('product_size')
+                ->where('size_id', $order->size_id)
+                ->where('product_id', $order->product_id)
+                ->value('quantity');
+            if ($order->quantity > $current_quantity) {
+                if ($current_quantity == 0) {
+                    $order->delete(); // check if it'll really delete it
+                    return response()->json([
+                        'error' => 'OutOfStock',
+                        'order' => $order,
+                        'message' => 'This product is currently out of stock, and the order will be canceled. Please check back later or explore similar products.'
+                    ], 409);
+                } else {
+                    return response()->json([
+                        'error' => 'InsufficientQuantity',
+                        'order' => $order,
+                        'message' => 'The requested quantity is not available at the moment. Please reduce the quantity to ' . $current_quantity . ' or check back later for availability.'
+                    ], 409);
+                }
+            }
+        }
+        // now, all orders are correct and can be done
+        $total_price = 0;
+        foreach ($cart as $order) {
+            $total_price += $order->price;
+            Order::findOrFail($order->id)->update([
+                'is_ordered' => true,
+                'submission_time' => Carbon::now(),
+                'expected_delivery_time' => Carbon::now()->addMinutes(2),
+            ]);
+            $table = DB::table('product_size')
+                ->where('size_id', $order->size_id)
+                ->where('product_id', $order->product_id);
+            $current_quantity = $table->value('quantity');
+            $table->update(['quantity' => $current_quantity - $order->quantity]);
+            if ($current_quantity - $order->quantity == 0) {
+                $table->delete();
+                $productExists = DB::table('product_size')->where('product_id', $order->product_id)->exists();
+                if (!$productExists) {
+                    Product::findOrFail($order->product_id)->delete();
+                }
+            }
+        }
+        return response()->json([
+            'message' => 'Cart has been ordered successfully. You will recieve the orders soon.'
+        ], 200);
     }
 }

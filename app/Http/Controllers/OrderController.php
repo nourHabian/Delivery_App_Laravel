@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Size;
@@ -32,7 +32,7 @@ class OrderController extends Controller
         ]);
         return response()->json([
             'message' => 'Order added successfully'
-        ], 200);
+        ], 201);
     }
     public function updateOrderSize(Request $request)
     {
@@ -60,7 +60,7 @@ class OrderController extends Controller
     public function updateOrderQuantity(Request $request)
     {
         $quantity = $request->quantity_new;
-        $order = Order::where('id', $request->order_id)->FirstOrFail();
+        $order = Order::findOrFail($request->order_id);
         $price = $order->price / $order->quantity;
         $price = $price * $quantity;
         Order::where('id', $request->order_id)->update([
