@@ -138,7 +138,8 @@ class UserController extends Controller
             }
         }
         return response()->json([
-            'message' => 'Cart has been ordered successfully. You will recieve the orders soon.'
+            'message' => 'Cart has been ordered successfully. You will recieve the orders soon.',
+            'total price' => $total_price,
         ], 200);
     }
 }
