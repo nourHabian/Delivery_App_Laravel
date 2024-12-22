@@ -20,19 +20,25 @@ Route::middleware('auth:sanctum')->group(function () {
     // to show user's completed orders
     Route::get('user/ordered', [UserController::class, 'showCompletedOrderes']);
     // to show user cart
-    Route::get('user/cart', [UserController::class, 'showUserCart']);
+    Route::get('user/cart/show', [UserController::class, 'showUserCart']);
+    // to order the current cart
+    Route::get('user/cart/order', [UserController::class, 'OrderCart']);
 
 
     // to get all stores
     Route::get('store/index', [StoreController::class, 'index']);
     // to get all products in a specific store
     Route::get('store/products', [StoreController::class, 'showStoreProducts']);
+    // search for a store by it's name
+    Route::get('store/search', [StoreController::class, 'searchStore']);
 
 
     // to get all products from all stores
     Route::get('product/index', [ProductController::class, 'index']);
     // to get a specific product information
     Route::get('product/show', [ProductController::class, 'showProductInfo']);
+    // search for a product by it's name
+    Route::get('product/search', [ProductController::class, 'searchProduct']);
 
 
     // to add an order
@@ -40,7 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // to edit an order size
     Route::put('order/update/size', [OrderController::class, 'updateOrderSize']);
     // to edit an order quantity
-    Route::put('order/update/quantity', [OrderController::class, 'updateOrderuQuantity']);
+    Route::put('order/update/quantity', [OrderController::class, 'updateOrderQuantity']);
     // to delete an order
     Route::delete('order/delete', [OrderController::class, 'destroyOrder']);
 });

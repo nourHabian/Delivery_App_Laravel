@@ -25,4 +25,17 @@ class ProductController extends Controller
             'product' => $product
         ], 200);
     }
+
+    public function searchProduct(Request $request)
+    {
+        $name = $request->name;
+        $products = Product::all();
+        $required_products = array();
+        foreach ($products as $product) {
+            if (str_contains(strtolower($product->name), strtolower($name))) {
+                array_push($required_products, $product);
+            }
+        }
+        return response()->json($required_products, 200);
+    }
 }

@@ -57,7 +57,7 @@ class OrderController extends Controller
         $order->delete();
         return response()->json(null, 204);
     }
-    public function updateOrderuQuantity(Request $request)
+    public function updateOrderQuantity(Request $request)
     {
         $quantity = $request->quantity_new;
         $order = Order::where('id', $request->order_id)->FirstOrFail();

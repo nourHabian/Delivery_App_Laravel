@@ -73,4 +73,16 @@ class UserController extends Controller
         return response()->json($product_list, 200);
     }
 
+    public function orderCart()
+    {
+        $user = Auth::user();
+        $orders = $user->orders;
+        $cart = array();
+        foreach($orders as $order) {
+            if (!$order->is_ordered) {
+                array_push($cart, $order);
+            }
+        }
+        
+    }
 }
