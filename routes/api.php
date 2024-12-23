@@ -49,4 +49,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('order/update/quantity', [OrderController::class, 'updateOrderQuantity']);
     // to delete an order
     Route::delete('order/delete', [OrderController::class, 'destroyOrder']);
+
+    Route::get('user/profile/show', [UserController::class, 'showProfile']);
+    Route::put('user/profile/update', [UserController::class, 'updateProfile']);
 });
