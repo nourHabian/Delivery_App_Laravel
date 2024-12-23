@@ -19,10 +19,10 @@ class UserController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        $filePath = "storage\app\public\profile_photos\default_profile_photo.png";
+        $filePath = "profile_photos/default_profile_photo.png";
         if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
-            $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('profile_photos', $fileName, 'public'); // Saves in storage/app/public/profile_photos
         }
         $user = User::create([
