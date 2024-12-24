@@ -163,6 +163,11 @@ class UserController extends Controller
     }
     public function updateProfile(Request $request){
         $user = Auth::user();
+        $request->validate([
+            'first_name' => 'sometimes|string|max:50|min:3',
+            'last_name' => 'sometimes|string|max:50|min:3',
+            'profile_photo' => 'file|mimes:jpg,jpeg,png|max:2048',
+        ]);
         if ($request->hasFile('profile_photo')){
             $file = $request->file('profile_photo');
             $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
@@ -176,5 +181,9 @@ class UserController extends Controller
             $user->update(['last_name'=>$request->last_name]);
         }
         return response()->json(['message'=>'update successfully']);
+    }
+    public function logout(Request  $request){
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message'=>'logout successfully']);
     }
 }
