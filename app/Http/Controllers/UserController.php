@@ -12,6 +12,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -148,9 +149,9 @@ class UserController extends Controller
         $user = Auth::user();
         $file_path = $user->profile_photo;
         if (Storage::disk('public')->exists($file_path)) {
-            $fileUrl = Storage::url($file_path);
+            $fileUrl = asset(Storage::url($file_path));
         } else {
-            $fileUrl = asset('storage\app\public\profile_photos\default_profile_photo.png');
+            $fileUrl = asset(Storage::url('profile_photos/default_profile_photo.png'));
         }
         return response()->json([
             'first_name' => $user->first_name,
@@ -169,9 +170,10 @@ class UserController extends Controller
             'last_name' => 'sometimes|string|max:50|min:3',
             'profile_photo' => 'file|mimes:jpg,jpeg,png|max:2048',
         ]);
-        if ($request->hasFile('profile_photo')){
+        if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
-            $fileName = Str::time() . '.' . $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            Storage::disk('public')->delete($user->profile_photo);
             $filePath = $file->storeAs('profile_photos', $fileName, 'public');
             $user->update(['profile_photo' => $filePath]);
         }
@@ -181,10 +183,11 @@ class UserController extends Controller
         if ($request->last_name) {
             $user->update(['last_name' => $request->last_name]);
         }
-        return response()->json(['message'=>'update successfully']);
+        return response()->json(['message' => 'update successfully']);
     }
-    public function logout(Request  $request){
+    public function logout(Request $request)
+    {
         $request->user()->currentAccessToken()->delete();
-        return response()->json(['message'=>'logout successfully']);
+        return response()->json(['message' => 'logout successfully']);
     }
 }

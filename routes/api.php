@@ -23,6 +23,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user/cart/show', [UserController::class, 'showUserCart']);
     // to order the current cart
     Route::get('user/cart/order', [UserController::class, 'OrderCart']);
+    // to show user profile
+    Route::get('user/profile/show', [UserController::class, 'showProfile']);
+    // to edit user profile
+    Route::post('user/profile/update', [UserController::class, 'updateProfile']);
+    // to logout the user
+    Route::delete('user/logout', [UserController::class, 'logout']);
 
 
     // to get all stores
@@ -49,8 +55,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('order/update/quantity', [OrderController::class, 'updateOrderQuantity']);
     // to delete an order
     Route::delete('order/delete', [OrderController::class, 'destroyOrder']);
-
-    Route::get('user/profile/show', [UserController::class, 'showProfile']);
-    Route::put('user/profile/update', [UserController::class, 'updateProfile']);
-    Route::delete('user/logout', [UserController::class, 'logout']);
 });

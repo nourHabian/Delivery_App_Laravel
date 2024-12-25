@@ -14,9 +14,9 @@ class StoreController extends Controller
         foreach ($stores as $store) {
             $file_path = $store->store_photo;
             if (Storage::disk('public')->exists($file_path)) {
-                $store['store_url'] = Storage::url($file_path);
+                $store['store_url'] = asset(Storage::url($file_path));
             } else {
-                $store['store_url'] = Storage::url('profile_photos/default_profile_photo.png');
+                $store['store_url'] = asset(Storage::url('profile_photos/default_profile_photo.png'));
             }
         }
         return response()->json($stores, 200);
@@ -28,9 +28,9 @@ class StoreController extends Controller
         foreach ($products as $product) {
             $file_path = $product->product_photo;
             if (Storage::disk('public')->exists($file_path)) {
-                $product['product_url'] = Storage::url($file_path);
+                $product['product_url'] = asset(Storage::url($file_path));
             } else {
-                $product['product_url'] = Storage::url('profile_photos/default_profile_photo.png');
+                $product['product_url'] = asset(Storage::url('profile_photos/default_profile_photo.png'));
             }
         }
         return response()->json($products, 200);
@@ -45,9 +45,9 @@ class StoreController extends Controller
             if (str_contains(strtolower($store->name), strtolower($name))) {
                 $file_path = $store->store_photo;
                 if (Storage::disk('public')->exists($file_path)) {
-                    $store['store_url'] = Storage::url($file_path);
+                    $store['store_url'] = asset(Storage::url($file_path));
                 } else {
-                    $store['store_url'] = Storage::url('profile_photos/default_profile_photo.png');
+                    $store['store_url'] = asset(Storage::url('profile_photos/default_profile_photo.png'));
                 }
                 array_push($required_stores, $store);
             }
