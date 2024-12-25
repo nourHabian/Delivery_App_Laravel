@@ -164,7 +164,12 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $user = Auth::user();
-        if ($request->hasFile('profile_photo')) {
+        $request->validate([
+            'first_name' => 'sometimes|string|max:50|min:3',
+            'last_name' => 'sometimes|string|max:50|min:3',
+            'profile_photo' => 'file|mimes:jpg,jpeg,png|max:2048',
+        ]);
+        if ($request->hasFile('profile_photo')){
             $file = $request->file('profile_photo');
             $fileName = Str::time() . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('profile_photos', $fileName, 'public');
@@ -176,6 +181,10 @@ class UserController extends Controller
         if ($request->last_name) {
             $user->update(['last_name' => $request->last_name]);
         }
-        return response()->json(['message' => 'update successfully']);
+        return response()->json(['message'=>'update successfully']);
+    }
+    public function logout(Request  $request){
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message'=>'logout successfully']);
     }
 }

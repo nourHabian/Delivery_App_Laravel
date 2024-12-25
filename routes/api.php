@@ -52,4 +52,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('user/profile/show', [UserController::class, 'showProfile']);
     Route::put('user/profile/update', [UserController::class, 'updateProfile']);
+    Route::delete('user/logout', [UserController::class, 'logout']);
 });
