@@ -143,38 +143,39 @@ class UserController extends Controller
             'total price' => $total_price,
         ], 200);
     }
-    public function showProfile(){
+    public function showProfile()
+    {
         $user = Auth::user();
         $file_path = $user->profile_photo;
         if (Storage::disk('public')->exists($file_path)) {
-    $fileUrl = Storage::url($file_path);
-} else {
-    $fileUrl = asset('storage\app\public\profile_photos\default_profile_photo.png');
-}
+            $fileUrl = Storage::url($file_path);
+        } else {
+            $fileUrl = asset('storage\app\public\profile_photos\default_profile_photo.png');
+        }
         return response()->json([
-         'first_name' => $user->first_name,
-        'last_name' => $user->last_name,
-        'password' => $user->password,
-        'phone_number' => $user->phone_number,
-        'location' => $user->location,
-        'profile_photo' => $fileUrl,
-        ],200);
-
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'password' => $user->password,
+            'phone_number' => $user->phone_number,
+            'location' => $user->location,
+            'profile_photo' => $fileUrl,
+        ], 200);
     }
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
         $user = Auth::user();
-        if ($request->hasFile('profile_photo')){
+        if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
-            $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $fileName = Str::time() . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('profile_photos', $fileName, 'public');
-            $user->update(['profile_photo'=>$filePath]);
+            $user->update(['profile_photo' => $filePath]);
         }
-        if($request->first_name){
-            $user->update(['first_name'=>$request->first_name]);
+        if ($request->first_name) {
+            $user->update(['first_name' => $request->first_name]);
         }
-        if($request->last_name){
-            $user->update(['last_name'=>$request->last_name]);
+        if ($request->last_name) {
+            $user->update(['last_name' => $request->last_name]);
         }
-        return response()->json(['message'=>'update successfully']);
+        return response()->json(['message' => 'update successfully']);
     }
 }
