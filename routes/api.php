@@ -39,7 +39,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('product/show', [ProductController::class, 'showProductInfo']);
     // search for a product by it's name
     Route::get('product/search', [ProductController::class, 'searchProduct']);
-
+    Route::get('addProduct/favorites', [ProductController::class, 'addToFavorites']);
+    Route::delete('removeProduct/favorites', [ProductController::class, 'removeFromFavorites']);
+    Route::get('favorites', [ProductController::class, 'getFavoriteProducts']);
 
     // to add an order
     Route::post('order/store', [OrderController::class, 'storeOrder']);

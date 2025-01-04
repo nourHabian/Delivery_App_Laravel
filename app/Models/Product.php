@@ -20,8 +20,8 @@ class Product extends Model
     {
         return $this->hasMany(Order::class);
     }
-    public function users()
+    public function favoriteByUsers()
     {
-        return $this->belongsToMany(User::class, 'product_user');
+        return $this->belongsToMany(User::class, 'favorites');
     }
 }
