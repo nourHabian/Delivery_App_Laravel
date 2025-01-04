@@ -12,6 +12,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -143,47 +144,50 @@ class UserController extends Controller
             'total price' => $total_price,
         ], 200);
     }
-    public function showProfile(){
+    public function showProfile()
+    {
         $user = Auth::user();
         $file_path = $user->profile_photo;
         if (Storage::disk('public')->exists($file_path)) {
-    $fileUrl = Storage::url($file_path);
-} else {
-    $fileUrl = asset('storage\app\public\profile_photos\default_profile_photo.png');
-}
+            $fileUrl = asset(Storage::url($file_path));
+        } else {
+            $fileUrl = asset(Storage::url('profile_photos/default_profile_photo.png'));
+        }
         return response()->json([
-         'first_name' => $user->first_name,
-        'last_name' => $user->last_name,
-        'password' => $user->password,
-        'phone_number' => $user->phone_number,
-        'location' => $user->location,
-        'profile_photo' => $fileUrl,
-        ],200);
-
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'password' => $user->password,
+            'phone_number' => $user->phone_number,
+            'location' => $user->location,
+            'profile_photo' => $fileUrl,
+        ], 200);
     }
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
         $user = Auth::user();
         $request->validate([
             'first_name' => 'sometimes|string|max:50|min:3',
             'last_name' => 'sometimes|string|max:50|min:3',
             'profile_photo' => 'file|mimes:jpg,jpeg,png|max:2048',
         ]);
-        if ($request->hasFile('profile_photo')){
+        if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
-            $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            Storage::disk('public')->delete($user->profile_photo);
             $filePath = $file->storeAs('profile_photos', $fileName, 'public');
-            $user->update(['profile_photo'=>$filePath]);
+            $user->update(['profile_photo' => $filePath]);
         }
-        if($request->first_name){
-            $user->update(['first_name'=>$request->first_name]);
+        if ($request->first_name) {
+            $user->update(['first_name' => $request->first_name]);
         }
-        if($request->last_name){
-            $user->update(['last_name'=>$request->last_name]);
+        if ($request->last_name) {
+            $user->update(['last_name' => $request->last_name]);
         }
-        return response()->json(['message'=>'update successfully']);
+        return response()->json(['message' => 'update successfully']);
     }
-    public function logout(Request  $request){
+    public function logout(Request $request)
+    {
         $request->user()->currentAccessToken()->delete();
-        return response()->json(['message'=>'logout successfully']);
+        return response()->json(['message' => 'logout successfully']);
     }
 }
