@@ -72,7 +72,7 @@ class ProductController extends Controller
         Auth::user()->favoriteProducts()->detach($request->id_product);
         return response()->json(['message'=> 'product removed from favorite'], 200);
     }
-    public function getFavoriteProducts(Request $request){
+    public function getFavoriteProducts(){
           $product = Auth::user()->favoriteProducts()->get();
     return response()->json($product, 200);
 }
