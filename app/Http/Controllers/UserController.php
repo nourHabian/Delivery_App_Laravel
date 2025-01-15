@@ -64,19 +64,49 @@ class UserController extends Controller
     {
         $orders = Auth::user()->orders;
         $product_list = [];
-        foreach ($orders as $order)
-            if (!$order->is_ordered)
-                $product_list[] = $order;
+        foreach ($orders as $order) {    
+            if (!$order->is_ordered) {
+                $product_id = $order->product_id;
+                $product = Product::findOrFail($product_id);
+                $store = $product->store;
+                $store_name = $store->name;
+                $file_path = $product->product_photo;
+                if (Storage::disk('public')->exists($file_path)) {
+                    $element['product_url'] = asset(Storage::url($file_path));
+                } else {
+                    $element['product_url'] = asset(Storage::url('profile_photos/default_profile_photo.png'));
+                }
+                $element['store_name'] = $store_name;
+                $element['order'] = $order;
+                array_push($product_list, $element);
+            }
+        }
         return response()->json($product_list, 200);
     }
 
     public function showCompletedOrderes()
     {
         $orders = Auth::user()->orders;
-        $product_list = [];
+        $product_list = array();
         foreach ($orders as $order)
+        {
             if ($order->is_ordered)
-                $product_list[] = $order;
+            {
+                $product_id = $order->product_id;
+                $product = Product::findOrFail($product_id);
+                $store = $product->store;
+                $store_name = $store->name;
+                $file_path = $product->product_photo;
+                if (Storage::disk('public')->exists($file_path)) {
+                    $element['product_url'] = asset(Storage::url($file_path));
+                } else {
+                    $element['product_url'] = asset(Storage::url('profile_photos/default_profile_photo.png'));
+                }
+                $element['store_name'] = $store_name;
+                $element['order'] = $order;
+                array_push($product_list, $element);
+            }    
+        }    
         return response()->json($product_list, 200);
     }
 
